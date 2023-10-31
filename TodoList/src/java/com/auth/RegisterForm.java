@@ -22,10 +22,28 @@ public class RegisterForm  extends HttpServlet{
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         
+        //password hashing
+        //store into database
         PrintWriter obj = res.getWriter();
-        obj.println("<h1>"+username+"</h1>");
-        obj.println("<h1>"+password+"</h1>");
-        obj.println("<h1>"+email+"</h1>");
+        
+        String s="<h1 style='text-align: center'>Login</h1>";
+        s=s+"<form action='login' method='post' >";
+            
+            s=s+"<p>";
+              s=s+ " <input type='email' name='email' placeholder='email'/>";
+            s+="</p>";
+             s+="<p>";
+               s+=" <input type='password' name='password' placeholder='password'/>";
+            s+="</p>";
+            s+="<p>";
+               s+= "<input type='submit'/>";
+                s+="<input type='reset'/>";
+            s+="</p>";
+        s+="</form>";
+        obj.println(s);
+//        obj.println("<h1>"+username+"</h1>");
+//        obj.println("<h1>"+password+"</h1>");
+//        obj.println("<h1>"+email+"</h1>");
     }
     
 }
