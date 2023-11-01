@@ -26,6 +26,12 @@ public class RegisterForm  extends HttpServlet{
         //store into database
         PrintWriter obj = res.getWriter();
         
+        
+        
+        String a="abcd";
+        a=a+"pqrs";
+        
+        
         String s="<h1 style='text-align: center'>Login</h1>";
         s=s+"<form action='login' method='post' >";
             
@@ -40,6 +46,7 @@ public class RegisterForm  extends HttpServlet{
                 s+="<input type='reset'/>";
             s+="</p>";
         s+="</form>";
+        s+="abcdefgh";
         obj.println(s);
 //        obj.println("<h1>"+username+"</h1>");
 //        obj.println("<h1>"+password+"</h1>");
