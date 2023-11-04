@@ -9,7 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import com.utility.PasswordHashing;
+import jakarta.servlet.http.Cookie;
 /**
  *
  * @author ashis
@@ -22,6 +23,14 @@ public class RegisterForm  extends HttpServlet{
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         
+        //session object
+        //cookie storage inside browser
+        Cookie cookie= new Cookie("username",username);
+        Cookie cookie2 = new Cookie("session","jgthry6rftersgfhghy");
+        res.addCookie(cookie);
+        res.addCookie(cookie2);
+        String ph = PasswordHashing.doHash(password);
+        System.out.println(ph);
         //password hashing
         //store into database
         PrintWriter obj = res.getWriter();
@@ -47,6 +56,7 @@ public class RegisterForm  extends HttpServlet{
             s+="</p>";
         s+="</form>";
         s+="abcdefgh";
+        s+=ph;
         obj.println(s);
 //        obj.println("<h1>"+username+"</h1>");
 //        obj.println("<h1>"+password+"</h1>");

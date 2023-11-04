@@ -7,6 +7,7 @@ package com.auth;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,13 +22,28 @@ public class LoginHandler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
         
+        
+        String email = req.getParameter("email");
+        String password= req.getParameter("password");
+        
+        
+       
+        
+        
         PrintWriter out = res.getWriter();
        
+       
+        out.println("<h1>"+email+"<h1>");
         out.println("<h1>Todo List</h1>");
         out.println("<h2>task 1</h2>");
         out.println("<h2>task 2</h2>");
         out.println("<h2>task 3</h2>");
-        
+        Cookie[] cookies = req.getCookies();
+       
+        for(Cookie c : cookies){
+            out.println(c.getName()+"==="+c.getValue());
+            
+        }
         
     }
 
