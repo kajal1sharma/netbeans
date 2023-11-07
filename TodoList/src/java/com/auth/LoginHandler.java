@@ -11,6 +11,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -27,6 +28,9 @@ public class LoginHandler extends HttpServlet {
         String password= req.getParameter("password");
         
         
+       HttpSession session=req.getSession();
+       
+       session.setAttribute("email",email);
        
         
         
@@ -38,6 +42,7 @@ public class LoginHandler extends HttpServlet {
         out.println("<h2>task 1</h2>");
         out.println("<h2>task 2</h2>");
         out.println("<h2>task 3</h2>");
+        out.println("<a href='newPage'>new Page</a>");
         Cookie[] cookies = req.getCookies();
        
         for(Cookie c : cookies){

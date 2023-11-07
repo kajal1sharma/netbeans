@@ -4,9 +4,13 @@
  */
 package com.auth;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -14,24 +18,17 @@ import java.io.PrintWriter;
  *
  * @author ashis
  */
-public class LoginServlet extends HttpServlet {
-    @Override
-    protected  void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
+public class LoginHandler  extends HttpServlet{
+     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         
-        //hashing 
-        //retreive info from db 
         
+        //password checking
         
-        PrintWriter out  = res.getWriter();
-        out.println(email);
-        out.println(password);
-        out.println("Successfully logged in");
+        RequestDispatcher rd = req.getRequestDispatcher("Home.html");
+        rd.forward(req, res);
         
-        
-        
-        
-        
+       
     }
 }
