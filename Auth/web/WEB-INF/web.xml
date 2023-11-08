@@ -6,6 +6,15 @@
 	 version="6.0">
 
      <servlet>
+        <servlet-name>xyz-logout</servlet-name>
+        <servlet-class>com.auth.LogoutHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+                <servlet-name>xyz-logout</servlet-name>
+                <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
         <servlet-name>xyz-register</servlet-name>
         <servlet-class>com.auth.RegisterHandler</servlet-class>
     </servlet>

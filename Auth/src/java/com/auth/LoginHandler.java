@@ -28,6 +28,13 @@ public class LoginHandler  extends HttpServlet{
         //password checking
         HttpSession session = req.getSession();
         User user= (User)(session.getAttribute("user"));
+        if(user==null){
+            PrintWriter out = res.getWriter();
+            res.setContentType("text/html");
+            out.println("you must Register first to create the session");
+            RequestDispatcher rd = req.getRequestDispatcher("Register.html");
+            rd.include(req, res);
+        }
         String  Hashedpassword = user.getPassword();
         if(Hashedpassword.equals(password)){
             RequestDispatcher rd = req.getRequestDispatcher("Home.html");
